@@ -28,7 +28,7 @@ int main()
                         device = pcap_open_live(d->name,65535,1,0,errBuf);
                         if(!device) printf("打开失败 %s\n\r",errBuf);
                         //send_opt(d,device,0);
-                        pcap_loop(device,-1,callback,NULL);
+                        //pcap_loop(device,-1,callback,NULL);
                 }
                 ++cnt;
         }

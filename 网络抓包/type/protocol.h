@@ -45,7 +45,7 @@ struct mac_head{
 
     unsigned short eh_type; //eh_type的值需要考察上一层的协议，如果为ip则为0×0800
 };
- struct ip_hdr{
+ struct ip_head{
     u_char h_verlen; //ip头部长度（按4字节对齐）
     u_char tos; //服务类型
     unsigned short total_len; //总长度（包含IP数据头，TCP数据头以及数据）
@@ -60,14 +60,14 @@ struct mac_head{
 
 };
 
-struct tsd_hdr{
+struct tsd_head{
     u_char saddr[4]; //源地址
     u_char daddr[4]; //目的地址
     char mbz; //置空
     char ptcl; //协议类型
     u_char tcpl[2]; //数据包长度
 };
-struct udphdr
+struct udp_hdr
 {
     u_char source[2]; /* source port */
     u_char dest[2]; /* destination port */

@@ -5,8 +5,12 @@
 #include "protocol.h"
 
 typedef unsigned int uint;
-
-
+struct data_link{
+    void* data;
+    uint len;
+    uint type;
+    struct data_link* next;
+};
 
 void callback(u_char *user, const struct pcap_pkthdr *h,const u_char *bytes);
 //Analyse
@@ -23,14 +27,16 @@ void cst_arp(u_char *bytes,struct ARP* p);
 void cst_ip(u_char* bytes,struct IP* p);
 
 //construct_head
-void cst_mac_head(struct mac_header* h,struct ADDRESS* from,struct ADDRESS* to);
-void cst_ip_head(struct ip_head*h,struct ADDRESS* from,struct ADDRESS* to);
-void cst_tcp_head();
-void cst_udp_head();
-void cst_arp_head();
+struct data_link* build_mac_head(struct ADDRESS* from,struct ADDRESS* to);
+struct data_link* build_ip_head(struct ADDRESS* from,struct ADDRESS* to);
+struct data_link* build_tcp_head(struct ADDRESS* from,struct ADDRESS* to);
+struct data_link* build_udp_head(struct ADDRESS* from,struct ADDRESS* to);
+struct data_link* build_arp_head(struct ADDRESS* from,struct ADDRESS* to);
+void* build_protocol(uint type);
 //Instrument
 char* judge_ip_variety(uint variety);
 
 //send_opt
-//void send_opt(pcap_if_t* device_inf,pcap_t* device,uint pro_type);
+
+void send_opt(uint pro_type,pcap_if_t* device_inf,pcap_t* device,struct ADDRESS* from,struct ADDRESS* to);
 #endif
