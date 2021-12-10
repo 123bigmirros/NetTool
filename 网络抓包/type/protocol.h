@@ -6,21 +6,24 @@
 typedef int TYPE_P;//协议类型返回
 
 struct ADDRESS{
-    u_char mac_addr[6];
-    u_char ip_addr[4];
-    u_char port[2];
+    u_char mac_addr_from[6];
+    u_char ip_addr_from[4];
+    u_char mac_addr_to[6];
+    u_char ip_addr_to[4];
+    u_char port_from[2];
+    u_char port_to[2];
 };
 //ARP结构
 struct ARP{
-        unsigned int hw_type:16;
-        unsigned int p_ytpe:16;
-        unsigned int hw_addr_len:8;
-        unsigned int p_len:8;
-        unsigned int op:16;
-        u_char from_py_addr[6];
-        u_char from_ip_addr[4];
-        u_char to_py_addr[6];
-        u_char to_ip_addr[4];
+    unsigned int hw_type:16;
+    unsigned int p_ytpe:16;
+    unsigned int hw_addr_len:8;
+    unsigned int p_len:8;
+    unsigned int op:16;
+    u_char from_py_addr[6];
+    u_char from_ip_addr[4];
+    u_char to_py_addr[6];
+    u_char to_ip_addr[4];
 };
 //IP结构
 struct IP{
