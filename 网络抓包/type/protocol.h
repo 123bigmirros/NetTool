@@ -1,10 +1,13 @@
 #ifndef PROTOCOL
 #define PROTOCOL
-
 #include<pcap.h>
-#include"../type/variety.h"
-typedef int TYPE_P;//协议类型返回
 
+struct DATA{
+    void* data;
+    uint len;
+    uint type;
+    struct data_link* next;
+};
 struct ADDRESS{
     u_char mac_addr_from[6];
     u_char ip_addr_from[4];
@@ -14,7 +17,7 @@ struct ADDRESS{
     u_char port_to[2];
 };
 //ARP结构
-struct ARP{
+struct ARP_P{
     unsigned int hw_type:16;
     unsigned int p_ytpe:16;
     unsigned int hw_addr_len:8;
@@ -26,7 +29,7 @@ struct ARP{
     u_char to_ip_addr[4];
 };
 //IP结构
-struct IP{
+struct IP_P{
         uint edition:4;
         uint head_length:4;
         uint service:8;

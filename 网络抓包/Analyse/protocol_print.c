@@ -1,22 +1,21 @@
-#include"../type/defn.h"
-#include "../type/protocol.h"
+#include "../type/init_variety.h"
 char* judge_ip_variety(uint variety);
 void ALS_ARP(u_char* bytes){
-    struct ARP_STR p;
+    struct ARP_P p;
     cst_arp(bytes,&p);
-    printf("%s\n",p.op==1? "ARPÇëÇó±¨ÎÄ":"ARPÓ¦´ð±¨ÎÄ");
-    printf("Ô´macµØÖ·:");
+    printf("%s\n",p.op==1? "ARPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½":"ARPÓ¦ï¿½ï¿½ï¿½ï¿½");
+    printf("Ô´macï¿½ï¿½Ö·:");
     for(int i=  0;i<6;i++){ printf(" %02x",p.from_py_addr[i]);}
-    printf("\nÄ¿µÄmacµØÖ·:");
+    printf("\nÄ¿ï¿½ï¿½macï¿½ï¿½Ö·:");
     for(int i=  0;i<6;i++){ printf(" %02x",p.to_py_addr[i]);}
-    printf("\nÔ´ipµØÖ·: ");
+    printf("\nÔ´ipï¿½ï¿½Ö·: ");
     for(int i = 0;i<4;i++){printf("%d%s",p.from_ip_addr[i],i!=3?".":"");}
-    printf("\nÄ¿µÄipµØÖ·: ");
+    printf("\nÄ¿ï¿½ï¿½ipï¿½ï¿½Ö·: ");
     for(int i = 0;i<4;i++){printf("%d%s",p.to_ip_addr[i],i!=3?".":"");}
 }
 
 void ALS_IP(u_char* bytes){
-    struct IP_STR p;
+    struct IP_P p;
     cst_ip(bytes,&p);
     printf("IP protocol\n");
     printf("edition: %02x head_length: %d service: %x\n",p.edition,p.head_length,p.service);
