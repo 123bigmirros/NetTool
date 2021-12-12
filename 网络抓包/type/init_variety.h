@@ -3,13 +3,10 @@
 #include "variety.h"
 #ifndef INIT_VARIETY
 #define INIT_VARIETY
+enum P_TYPE{MAC,ARP,IP};
 
-static const u_char p_type[][3] ={{0x08,0x06,'\0'}};//,{0x08,0x00,'\0'}};//ARP
 void (*p_func[])(u_char *bytes) = {ALS_ARP,ALS_IP};
 struct data* (*build_func[])(struct ADDRESS* addr,struct DATA* data) = {build_arp};
-const char *FROM = "FROM";
-const char *TO = "TO";
-const char *UNDEFINE = "UNDEFINE";
 
 enum P_TYPE p_head_build_order[][10] = {{ARP,MAC,-1}};
 #define unit_8_to_16(x,y) (((uint)x<<8)|(uint)y)

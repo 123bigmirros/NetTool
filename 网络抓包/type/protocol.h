@@ -19,7 +19,7 @@ struct ADDRESS{
 //ARP结构
 struct ARP_P{
     unsigned int hw_type:16;
-    unsigned int p_ytpe:16;
+    unsigned int p_type:16;
     unsigned int hw_addr_len:8;
     unsigned int p_len:8;
     unsigned int op:16;

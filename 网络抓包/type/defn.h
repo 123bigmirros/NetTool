@@ -22,13 +22,12 @@ void cst_arp(u_char *bytes,struct ARP* p);
 void cst_ip(u_char* bytes,struct IP* p);
 
 //build
-struct DATA* build(enum P_TYPE* build_oder[10],struct ADDRESS* addr,u_char* data);
+struct DATA* build(enum P_TYPE* build_order,struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_mac_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_ip_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_tcp_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_udp_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_arp(struct ADDRESS* addr,struct DATA* data);
-void* build_protocol(uint type);
 //Instrument
 char* judge_ip_variety(uint variety);
 
