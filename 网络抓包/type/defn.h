@@ -33,7 +33,10 @@ char* judge_ip_variety(uint variety);
 
 //send_opt
 
-void send_opt(uint pro_type,pcap_if_t* device_inf,pcap_t* device,struct ADDRESS* addr);
+void send(pcap_t* device,struct DATA* data);
 
-
+//Tool
+//data_link_opt
+void data_link_add(struct DATA* new,struct DATA* old,int len,void* data);
+void* data_link_union(struct DATA* data);
 #endif

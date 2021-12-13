@@ -32,16 +32,6 @@ int main()
                 }
                 ++cnt;
         }
-        
-        
-        
-        // char *device;//用来保存打开的设备
-        // char errBuf[PCAP_ERRBUF_SIZE];//保存错误信息
-        // device = pcap_lookupdev(errBuf);
-        // pcap_t* wifi = pcap_open_live("\\Device\\NPF_{695D6D38-29AA-4246-A667-2C103B7A31D4}",65535,1,0,errBuf);
-        // printf("%s\n",device);
-        // if(!wifi) printf("打开失败 %s\n\r",errBuf);
-        // pcap_loop(wifi,-1,callback,NULL);
         return 0;
 }
 void callback(u_char *user, const struct pcap_pkthdr *h,const u_char *bytes){

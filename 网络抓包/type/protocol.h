@@ -1,11 +1,11 @@
 #ifndef PROTOCOL
 #define PROTOCOL
 #include<pcap.h>
-
+#include "variety.h"
 struct DATA{
     void* data;
     uint len;
-    uint type;
+    enum P_TYPE type;
     struct data_link* next;
 };
 struct ADDRESS{
@@ -49,7 +49,7 @@ struct mac_head{
     u_char to[6]; //目的地址
     u_char from[6]; //源地址
 
-    unsigned short eh_type; //eh_type的值需要考察上一层的协议，如果为ip则为0×0800
+    u_char eh_type[2]; //eh_type的值需要考察上一层的协议，如果为ip则为0×0800
 };
  struct ip_head{
     u_char h_verlen; //ip头部长度（按4字节对齐）

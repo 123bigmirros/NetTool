@@ -3,7 +3,7 @@
 #include "variety.h"
 #ifndef INIT_VARIETY
 #define INIT_VARIETY
-enum P_TYPE{MAC,ARP,IP};
+
 
 void (*p_func[])(u_char *bytes) = {ALS_ARP,ALS_IP};
 struct data* (*build_func[])(struct ADDRESS* addr,struct DATA* data) = {build_arp};
