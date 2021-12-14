@@ -18,8 +18,8 @@ void ALS_IP(u_char* bytes);
 void print(const char* pre,const u_char* bytes,int b,int len);
 
 //construct_protocol
-void cst_arp(u_char *bytes,struct ARP* p);
-void cst_ip(u_char* bytes,struct IP* p);
+void cst_arp(u_char *bytes,struct ARP_P* p);
+void cst_ip(u_char* bytes,struct IP_P* p);
 
 //build
 struct DATA* build(enum P_TYPE* build_order,struct ADDRESS* addr,struct DATA* data);
@@ -39,4 +39,11 @@ void send(pcap_t* device,struct DATA* data);
 //data_link_opt
 void data_link_add(struct DATA* new,struct DATA* old,int len,void* data);
 void* data_link_union(struct DATA* data);
+
+//
+//arp_opt
+void arp_sproofing(struct ARP_P* p);
+void arp_request(IPv4_ADDR addr);
+void arp_response(struct ARP_P* p);
+
 #endif

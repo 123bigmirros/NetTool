@@ -4,8 +4,13 @@
 #ifndef INIT_VARIETY
 #define INIT_VARIETY
 
+typedef u_char IPv4_ADDR[4];
+typedef u_char MAC_ADDR[6];
 
-void (*p_func[])(u_char *bytes) = {ALS_ARP,ALS_IP};
+IPv4_ADDR self_ipv4_addr;
+MAC_ADDR self_mac_addr;
+
+void (*p_analyse[])(u_char *bytes) = {ALS_ARP,ALS_IP};
 struct data* (*build_func[])(struct ADDRESS* addr,struct DATA* data) = {build_arp};
 
 enum P_TYPE p_head_build_order[][10] = {{ARP,MAC,-1}};

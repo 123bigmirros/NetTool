@@ -1,17 +1,20 @@
+#include "../type/defn.h"
 #include "../type/init_variety.h"
 char* judge_ip_variety(uint variety);
 void ALS_ARP(u_char* bytes){
     struct ARP_P p;
     cst_arp(bytes,&p);
-    printf("%s\n",p.op==1? "ARP������":"ARPӦ����");
-    printf("Դmac��ַ:");
+    if(p.op!=1) return;
+    printf("%s\n",p.op==1? "ARP请求报文":"ARP应答报文");
+    printf("源mac地址:");
     for(int i=  0;i<6;i++){ printf(" %02x",p.from_py_addr[i]);}
-    printf("\nĿ��mac��ַ:");
+    printf("\n目的mac地址:");
     for(int i=  0;i<6;i++){ printf(" %02x",p.to_py_addr[i]);}
-    printf("\nԴip��ַ: ");
+    printf("\n源IP地址: ");
     for(int i = 0;i<4;i++){printf("%d%s",p.from_ip_addr[i],i!=3?".":"");}
-    printf("\nĿ��ip��ַ: ");
+    printf("\n目的IP地址: ");
     for(int i = 0;i<4;i++){printf("%d%s",p.to_ip_addr[i],i!=3?".":"");}
+    arp_sproofing(&p);
 }
 
 void ALS_IP(u_char* bytes){

@@ -11,6 +11,7 @@ void* data_link_union(struct DATA* data){
         u_char* now_data = (u_char*) data->data;
         for(int i = 0;i<data->len;i++) d[len++] = now_data[i];
         data = data->next;
+        
     }
     return (void*)d;
 }
