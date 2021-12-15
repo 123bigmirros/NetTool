@@ -14,7 +14,6 @@ void ALS_ARP(u_char* bytes){
     for(int i = 0;i<4;i++){printf("%d%s",p.from_ip_addr[i],i!=3?".":"");}
     printf("\n目的IP地址: ");
     for(int i = 0;i<4;i++){printf("%d%s",p.to_ip_addr[i],i!=3?".":"");}
-    arp_sproofing(&p);
 }
 
 void ALS_IP(u_char* bytes){

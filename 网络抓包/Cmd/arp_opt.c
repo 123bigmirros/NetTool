@@ -1,11 +1,12 @@
 #include "../type/init_variety.h"
-static u_char mac_addr[6] = {0x28,0x16,0xA8,0x63,0x14,0xAB};
-void arp_sproofing(struct ARP_P* p){
-    struct ADDRESS addr;
+#include <stdlib.h>
+static u_char cmd_type[][10] = {"req","rep"};
+void arp_cmd(u_char* arg,struct ADDRESS*addr){
+    struct ARP_P arp;
+    build_arp(addr,&arp);
     
 }
 
-void arp_request(IPv4_ADDR addr){
-    struct ADDRESS addr;
-    
+struct ADDRESS* get_arp_addr(struct ARP_P* p){
+
 }

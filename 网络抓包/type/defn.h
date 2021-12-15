@@ -27,7 +27,7 @@ struct DATA* build_mac_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_ip_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_tcp_head(struct ADDRESS* addr,struct DATA* data);
 struct DATA* build_udp_head(struct ADDRESS* addr,struct DATA* data);
-struct DATA* build_arp(struct ADDRESS* addr,struct DATA* data);
+void build_arp(struct ADDRESS* addr,struct ARP_P* arp);
 //Instrument
 char* judge_ip_variety(uint variety);
 
@@ -39,11 +39,12 @@ void send(pcap_t* device,struct DATA* data);
 //data_link_opt
 void data_link_add(struct DATA* new,struct DATA* old,int len,void* data);
 void* data_link_union(struct DATA* data);
-
+struct DATA* get_data(void* data,int len);
 //
 //arp_opt
-void arp_sproofing(struct ARP_P* p);
-void arp_request(IPv4_ADDR addr);
-void arp_response(struct ARP_P* p);
+void arp_cmd(u_char* arg,struct ADDRESS*addr);
+//init
+void init();
+
 
 #endif
