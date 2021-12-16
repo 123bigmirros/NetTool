@@ -20,4 +20,5 @@ struct data* (*build_func[])(struct ADDRESS* addr,struct DATA* data) = {[MAC]=bu
 #define unit_8_to_32(x,y,z,k) (((uint)x<<24)|((uint)y<<16)|((uint)z<<8)|(uint)k)
 #define unit_8_to_pre4(x) ((u_char)x>>4)
 #define unit_8_to_suf4(x) ((u_char)x&0x0f)
+#define sizeof_2d_array(x) (sizeof(x)/sizeof(*x))
 #endif

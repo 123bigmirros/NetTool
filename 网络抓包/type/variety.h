@@ -22,6 +22,8 @@ const u_char mac_p_type[][3] ={
 #define ARP_REQUEST 0x01 //操作类型:ARP请求
 #define ARP_RESPONSE 0x02 //操作类型：ARP响应
 #define ARP_LEVEL 2
+#define ARP_REQUEST_OP 1
+#define ARP_RESPONSE_OP 2
 //mac 
 #define MAC_ADDR_LEN 6
 
