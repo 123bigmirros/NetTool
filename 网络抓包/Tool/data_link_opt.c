@@ -11,8 +11,14 @@ void* data_link_union(struct DATA* data){
         u_char* now_data = (u_char*) data->data;
         for(int i = 0;i<data->len;i++) d[len++] = now_data[i];
         data = data->next;
-        
     }
     return (void*)d;
+}
+
+struct DATA* create_DATA(void* data,int len,enum P_TYPE type){
+    struct DATA* new_data = (struct DATA*) calloc(1,sizeof(struct DATA));
+    new_data->data = data;
+    new_data->len = len;
+    new_data->type = type;
 }
 

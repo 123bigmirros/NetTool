@@ -2,11 +2,9 @@
 #include "../type/init_variety.h"
 #include<stdlib.h>
 
-struct DATA* build(enum P_TYPE* build_order,struct ADDRESS* addr,struct DATA* data){
-    for(int i = 0;build_order[i]!=-1;i++){
-        enum P_TYPE type = build_order[i];
-        data = build_func[type](addr,data);
-        data->type = type;
+struct DATA* build(int p_level,struct DATA* data,struct ADDRESS* addr){
+    for(int i = p_level-1;i>=0;i--){
+        build_func[i](addr);
     }
     return data;
 }
@@ -24,14 +22,12 @@ void build_arp(struct ADDRESS* addr,struct ARP_P* arp){
     
 }
 
-struct DATA* build_mac_head(struct ADDRESS* addr,struct DATA* data){
+struct DATA* build_mac_head(struct ADDRESS* addr){
     //为协议分配内存
     struct DATA* new_data = (struct DATA*)calloc(1,sizeof(struct DATA));
     struct mac_head* mac_head = (struct mac_head*)calloc(1,sizeof(struct mac_head));
     
     for(int i = 0;i<MAC_ADDR_LEN;i++) mac_head->from[i] = addr->mac_addr_from[i],mac_head->to[i] = addr->mac_addr_to[i];
-    mac_head->eh_type[0] = mac_p_type[data->type][0],mac_head->eh_type[1] = mac_p_type[data->type][1];
-    add(new_data,data,sizeof(struct mac_head),data);
     return new_data;
 }
 

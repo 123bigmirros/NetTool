@@ -18,6 +18,7 @@ void arp_cmd(int argc,u_char* args[],struct ADDRESS*addr){
             if(strcmp(args[i],cmd_arg[j])==0) p[j](&arp);
         }
     }
+    struct Data* data = create_DATA((void*)&arp,sizeof(struct ARP_P),ARP);
 }
 
 struct ADDRESS* get_arp_addr(struct ARP_P* p){
