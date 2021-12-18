@@ -11,14 +11,14 @@ static u_char cmd_arg[][10] = {"req","rep"};
 static void (*p[])(struct ARP_P* p) = {arp_req_set,arp_req_set};
 
 void arp_cmd(int argc,u_char* args[],struct ADDRESS*addr){
-    struct ARP_P arp;
-    build_arp(addr,&arp);
+    struct ARP_P* arp;
+    arp = build_arp(addr);
     for(int i = 0;i<argc;i++){
         for(int j = 0;j<sizeof_2d_array(cmd_arg);j++){
-            if(strcmp(args[i],cmd_arg[j])==0) p[j](&arp);
+            if(strcmp(args[i],cmd_arg[j])==0) p[j](arp);
         }
     }
-    struct Data* data = create_DATA((void*)&arp,sizeof(struct ARP_P),ARP);
+    struct Data* data = create_DATA((void*)arp,sizeof(struct ARP_P),ARP);
 }
 
 struct ADDRESS* get_arp_addr(struct ARP_P* p){
