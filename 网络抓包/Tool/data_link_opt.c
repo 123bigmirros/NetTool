@@ -1,4 +1,4 @@
-#include "../type/defn.h"
+#include "../type/init_variety.h"
 //用于DATA数据结构的基本操作
 void data_link_add(struct DATA* new,struct DATA* old,int len,void* data){
     new->data = data,new->len = len+(data==NULL?0:old->len);

@@ -1,5 +1,6 @@
 #include"../type/defn.h"
-char* ICMP = "ICMP",*IGMP = "IGMP",*TCP = "TCP",*UDP = "UDP",*OSPF = "OSPF",*UNKOWN = "UNKOWN";
+
+
 char* judge_ip_variety(uint variety){
     switch (variety){
         case 1:return "ICMP";
@@ -13,5 +14,11 @@ char* judge_ip_variety(uint variety){
         case 17: return "UDP"; 
         default: return "NULL";
         break;
+    }
+}
+void setup_mac_type_field(void* protocol,enum P_TYPE upper){
+    struct MAC_HEAD *p = (struct MAC_P*) protocol;
+    for(int i = 0;i<sizeof(p->type);i++){
+        p->type[i] = mac_type[upper][i];
     }
 }

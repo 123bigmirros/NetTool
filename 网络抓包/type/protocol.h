@@ -45,13 +45,13 @@ struct IP_P{
         u_char* data;
 };
 
-struct mac_head{
+struct MAC_HEAD{
     u_char to[6]; //目的地址
     u_char from[6]; //源地址
 
-    u_char eh_type[2]; //eh_type的值需要考察上一层的协议，如果为ip则为0×0800
+    u_char type[2]; //eh_type的值需要考察上一层的协议，如果为ip则为0×0800
 };
- struct ip_head{
+ struct IP_HEAD{
     u_char h_verlen; //ip头部长度（按4字节对齐）
     u_char tos; //服务类型
     unsigned short total_len; //总长度（包含IP数据头，TCP数据头以及数据）

@@ -18,8 +18,8 @@ void analyse(const struct pcap_pkthdr *h,const u_char *bytes){
 enum P_TYPE judge_type(u_char *bytes){
     u_char p_kind[3];
     p_kind[0] = bytes[12],p_kind[1] = bytes[13],p_kind[2] = '\0';
-    for(int i=  0;i<(int)sizeof(mac_p_type)/sizeof(mac_p_type[0]);i++){
-        if(strcmp(p_kind,mac_p_type[i])==0) return i;
+    for(int i=  0;i<(int)sizeof(mac_type)/sizeof(mac_type[0]);i++){
+        if(strcmp(p_kind,mac_type[i])==0) return i;
     }
     return -1;
 }

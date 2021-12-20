@@ -30,7 +30,8 @@ struct DATA* build_udp_head(struct ADDRESS* addr);
 struct ARP_P* build_arp(struct ADDRESS* addr);
 //Tool
 char* judge_ip_variety(uint variety);
-char* set_up_p_type();
+void setup_mac_type_field(void* protol,enum P_TYPE upper);
+void get_address(struct ADDRESS* addr,u_char* to_mac,u_char* to_ip);
 //send_opt
 
 void send(pcap_t* device,struct DATA* data,struct ADDRESS* addr);
@@ -43,8 +44,11 @@ struct DATA* create_DATA(void* data,int len,enum P_TYPE type);
 //
 //arp_opt
 void arp_cmd(int argc,u_char* args[],struct ADDRESS*addr);
+void arp_model_judge(u_char* to_mac,u_char* to_ip);
 //init
 void init();
 
+//terminal
+void teminal();
 
 #endif
