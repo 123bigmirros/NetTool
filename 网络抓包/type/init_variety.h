@@ -1,6 +1,4 @@
 #include "defn.h"
-#include "protocol.h"
-#include "variety.h"
 #ifndef INIT_VARIETY
 #define INIT_VARIETY
 

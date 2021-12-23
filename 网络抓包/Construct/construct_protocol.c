@@ -1,5 +1,4 @@
-#include "../type/defn.h"
-#include "../type/protocol.h"
+#include "../type/init_variety.h"
 void cst_arp(u_char *bytes,struct ARP_P* p){
     p->hw_type = unit_8_to_16(bytes[0],bytes[1]);
     p->p_type = unit_8_to_16(bytes[2],bytes[3]);

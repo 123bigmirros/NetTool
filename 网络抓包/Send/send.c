@@ -1,7 +1,5 @@
-#include"../type/defn.h"
-#include"../type/protocol.h"
-#include"pcap.h"
+#include "../type/init_variety.h"
 
-void send(pcap_t* device,struct DATA* data){
-    pcap_inject(device,data_link_union(data),data->len);
+void send_data(struct DATA* data){
+    //pcap_inject(device,DATA_t_byte(data),data->len);
 }

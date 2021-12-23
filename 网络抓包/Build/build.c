@@ -18,11 +18,11 @@ struct ARP_P* build_arp(struct ADDRESS* addr){
     arp->hw_type = ARP_TYPE_ETHE;
     arp->p_type = ARP_PROTOCOL_TYPE_IP;
     arp->hw_addr_len = MAC_ADDR_LEN;
-    arp->hw_addr_len = IP_ADDR_LEN;
+    arp->p_len = IPV4_ADDR_LEN;
     //设置arp地址
     //问题，无法解决大端和小端的表示问题
     for(int i = 0;i<MAC_ADDR_LEN;i++) arp->from_py_addr[i] = addr->mac_addr_from[i],arp->to_py_addr[i] = addr->mac_addr_to[i];
-    for(int i=  0;i<IP_ADDR_LEN;i++) arp->from_ip_addr[i] = addr->ip_addr_from[i],arp->to_ip_addr[i] = addr->ip_addr_to[i];
+    for(int i=  0;i<IPV4_ADDR_LEN;i++) arp->from_ip_addr[i] = addr->ip_addr_from[i],arp->to_ip_addr[i] = addr->ip_addr_to[i];
     return arp;
 }
 

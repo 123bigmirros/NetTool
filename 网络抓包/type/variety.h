@@ -16,7 +16,7 @@ const char *UNDEFINE = "UNDEFINE";
 
 
 //ARP
-uint ARP_MODE = 0;
+uint ARP_MODE = 1;
 enum ARP_MODE_TYPE  {SPOOFING};
 #define ARP_TYPE_ETHE 0x01 //硬件类型：以太网
 #define ARP_PROTOCOL_TYPE_IP 0x0806 //协议类型 : IP
@@ -30,7 +30,9 @@ enum ARP_MODE_TYPE  {SPOOFING};
 const u_char mac_type[][3] ={
     [ARP]={0x08,0x06,'\0'}
 };
-#define IP_ADDR_LEN 4
 
+
+//IP
+#define IPV4_ADDR_LEN 4
 
 #endif

@@ -4,20 +4,22 @@
 static void arp_req_set(struct ARP_P* p){
     p->op = ARP_REQUEST_OP;
 }
-static void arp_req_set(struct ARP_P* p){
+static void arp_rep_set(struct ARP_P* p){
     p->op = ARP_RESPONSE_OP;
 }
 static void arp_spoofing(u_char* to_mac,u_char* to_ip){
     struct ADDRESS addr;
     struct ARP_P* arp;
+    struct DATA* data;
     get_address(&addr,to_mac,to_ip);
     arp = build_arp(&addr);
-    arp_req_set(arp);
-    struct DATA* data = create_DATA((void*)arp,sizeof(struct ARP_P),ARP);
+    arp_rep_set(arp);
+    data = create_DATA((u_char*)arp,sizeof(struct ARP_P),ARP);
     data = build(ARP_LEVEL,data,&addr);
+    send_data(data);
 }
 static u_char cmd_arg[][10] = {"req","rep"};
-static void (*set_field[])(struct ARP_P* p) = {arp_req_set,arp_req_set};
+static void (*set_field[])(struct ARP_P* p) = {arp_req_set,arp_rep_set};
 static void (*arp_mode_opt[])(u_char*,u_char*) = {arp_spoofing};
 void arp_cmd(int argc,u_char* args[],struct ADDRESS*addr){
     struct ARP_P* arp;

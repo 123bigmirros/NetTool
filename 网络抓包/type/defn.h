@@ -3,7 +3,6 @@
 
 #include<pcap.h>
 #include "protocol.h"
-#include "variety.h"
 typedef unsigned int uint;
 
 
@@ -34,13 +33,14 @@ void setup_mac_type_field(void* protol,enum P_TYPE upper);
 void get_address(struct ADDRESS* addr,u_char* to_mac,u_char* to_ip);
 //send_opt
 
-void send(pcap_t* device,struct DATA* data,struct ADDRESS* addr);
+void send_data(struct DATA* data);
 
 //Tool
 //data_link_opt
-void data_link_add(struct DATA* new,struct DATA* old,int len,void* data);
+void* DATA_t_byte(struct DATA* head);
 void data_union(struct DATA* new_data,struct DATA* old_data);
-struct DATA* create_DATA(void* data,int len,enum P_TYPE type);
+struct DATA* create_DATA(u_char* data,int len,enum P_TYPE type);
+void free_DATA(struct DATA* head);
 //
 //arp_opt
 void arp_cmd(int argc,u_char* args[],struct ADDRESS*addr);

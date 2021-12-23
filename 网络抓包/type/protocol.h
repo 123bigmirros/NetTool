@@ -3,7 +3,7 @@
 #include<pcap.h>
 #include "variety.h"
 struct DATA{
-    void* data;
+    u_char* data;
     uint len;
     enum P_TYPE type;
     struct data_link* next;
